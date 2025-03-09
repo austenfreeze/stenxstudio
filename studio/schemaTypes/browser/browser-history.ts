@@ -7,19 +7,19 @@ export default {
       name: "title",
       title: "Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "url",
       title: "URL",
       type: "url",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "visitedAt",
       title: "Visited At",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
   ],
   preview: {
@@ -28,5 +28,4 @@ export default {
       subtitle: "visitedAt",
     },
   },
-}
-
+};

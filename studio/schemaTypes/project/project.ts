@@ -5,9 +5,25 @@ export default defineType({
   title: "Project",
   type: "document",
   fields: [
-    defineField({ name: "title", title: "Project Title", type: "string", validation: (Rule) => Rule.required() }),
-    defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title", maxLength: 96 }, validation: (Rule) => Rule.required() }),
-    defineField({ name: "description", title: "Description", type: "text", validation: (Rule) => Rule.required() }),
+    defineField({
+      name: "title",
+      title: "Project Title",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "title", maxLength: 96 },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "description",
+      title: "Description",
+      type: "text",
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: "category",
       title: "Category",
@@ -25,13 +41,22 @@ export default defineType({
       title: "Project Cover Photo",
       type: "image",
       options: { hotspot: true },
-      fields: [defineField({ name: "alt", title: "Alternative Text", type: "string" })],
+      fields: [
+        defineField({ name: "alt", title: "Alternative Text", type: "string" }),
+      ],
     }),
     defineField({
       name: "concepts",
       title: "Concepts",
       type: "array",
-      of: [{ type: "object", fields: [{ name: "conceptTitle", title: "Concept Title", type: "string" }] }],
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "conceptTitle", title: "Concept Title", type: "string" },
+          ],
+        },
+      ],
     }),
     defineField({
       name: "samples",
@@ -66,8 +91,16 @@ export default defineType({
         {
           type: "object",
           fields: [
-            defineField({ name: "audioName", title: "Audio File Name", type: "string" }),
-            defineField({ name: "audioCover", title: "Audio File Cover", type: "image" }),
+            defineField({
+              name: "audioName",
+              title: "Audio File Name",
+              type: "string",
+            }),
+            defineField({
+              name: "audioCover",
+              title: "Audio File Cover",
+              type: "image",
+            }),
             defineField({ name: "asset", title: "Audio File", type: "file" }),
           ],
         },
@@ -99,8 +132,16 @@ export default defineType({
         {
           type: "object",
           fields: [
-            defineField({ name: "referenceName", title: "Reference Name", type: "string" }),
-            defineField({ name: "referenceLink", title: "Reference Link", type: "url" }),
+            defineField({
+              name: "referenceName",
+              title: "Reference Name",
+              type: "string",
+            }),
+            defineField({
+              name: "referenceLink",
+              title: "Reference Link",
+              type: "url",
+            }),
             defineField({ name: "photo", title: "Photo", type: "image" }),
           ],
         },
@@ -120,13 +161,13 @@ export default defineType({
               name: "title",
               title: "Document Title",
               type: "string",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: import("sanity").Rule) => Rule.required(),
             }),
             defineField({
               name: "asset",
               title: "Document File",
               type: "file",
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: import("sanity").Rule) => Rule.required(),
             }),
             defineField({
               name: "coverPhoto",
@@ -139,7 +180,7 @@ export default defineType({
               title: "Upload Date",
               type: "datetime",
               options: { dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm" },
-              validation: (Rule) => Rule.required(),
+              validation: (Rule: import("sanity").Rule) => Rule.required(),
             }),
           ],
         },

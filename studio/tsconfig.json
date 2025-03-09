@@ -10,12 +10,12 @@
     "module": "esnext",
     "moduleResolution": "node",   // ✅ Changed from "bundler" to "node"
     "resolveJsonModule": true,
-    "target": "esnext",
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "react",
     "incremental": true,
-    "types": ["@types/react", "@types/tailwindcss", "node"],
+"types": ["@types/react", "node"],
+
     "baseUrl": ".",
     "paths": {
       "@components/*": ["app/components/*"],

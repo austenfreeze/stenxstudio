@@ -18,8 +18,7 @@ export default defineType({
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 100 },
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
     defineField({
       name: "coverImage",
       title: "Cover Image",

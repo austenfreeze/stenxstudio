@@ -11,7 +11,7 @@ export default defineType({
       name: "galleryCover",
       title: "Gallery Cover Photo",
       type: "image",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "title",
@@ -49,8 +49,11 @@ export default defineType({
               title: "Slug",
               type: "slug",
               description: "Unique slug for the image.",
-              options: { source: "name", slugify: (input) => input.toLowerCase().replace(/\s+/g, "-") },
-              validation: (Rule) => Rule.required(),
+              options: {
+                source: "name",
+                slugify: (input) => input.toLowerCase().replace(/\s+/g, "-"),
+              },
+              validation: (Rule: import("sanity").Rule) => Rule.required(),
             }),
             defineField({
               name: "caption",
@@ -72,7 +75,8 @@ export default defineType({
         layout: "grid", // Displays images in a grid
         sortable: true, // Enables drag-and-drop sorting
       },
-      validation: (Rule) => Rule.required().min(1).warning("Add at least one image."),
+      validation: (Rule) =>
+        Rule.required().min(1).warning("Add at least one image."),
     }),
   ],
   preview: {

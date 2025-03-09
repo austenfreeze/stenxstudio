@@ -7,7 +7,7 @@ export default {
       name: "name",
       title: "Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "icon",
@@ -41,5 +41,4 @@ export default {
       subtitle: "action",
     },
   },
-}
-
+};

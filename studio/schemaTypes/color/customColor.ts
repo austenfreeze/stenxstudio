@@ -9,14 +9,14 @@ export default defineType({
       name: "title",
       title: "Color Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "hex",
       title: "Hex Code",
       type: "color", // Uses @sanity/color-input
       options: { disableAlpha: true },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "image",

@@ -18,14 +18,14 @@ export default defineType({
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 100 },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "artist",
       title: "Artist",
       type: "reference",
       to: [{ type: "artist" }],
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "album",
@@ -44,18 +44,19 @@ export default defineType({
       title: "Audio File",
       type: "file",
       options: { accept: "audio/*" },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "duration",
       title: "Duration",
       type: "string",
       description: "Format: mm:ss",
-      validation: (Rule) => Rule.required().regex(/^\d{1,2}:\d{2}$/, {
-        name: "time",
-        invert: false,
-        message: "Must be in mm:ss format",
-      }),
+      validation: (Rule) =>
+        Rule.required().regex(/^\d{1,2}:\d{2}$/, {
+          name: "time",
+          invert: false,
+          message: "Must be in mm:ss format",
+        }),
     }),
   ],
   preview: {

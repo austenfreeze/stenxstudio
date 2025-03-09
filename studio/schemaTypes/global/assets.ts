@@ -11,15 +11,13 @@ export default defineType({
       name: "title",
       title: "Asset Title",
       type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
     defineField({
       name: "slug",
       title: "Slug",
       type: "slug",
       options: { source: "title", maxLength: 96 },
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
     defineField({
       name: "assetFile",
       title: "Asset File",
@@ -27,8 +25,7 @@ export default defineType({
       options: {
         accept: ".pdf,.mp3,.mp4,.png,.jpg,.jpeg,.svg,.ai,.psd,.eps,.indd,.xd,.zip",
       },
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
     defineField({
       name: "coverPhoto",
       title: "Cover Photo",
@@ -50,15 +47,13 @@ export default defineType({
           { title: "Other", value: "other" },
         ],
       },
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
     defineField({
       name: "uploadDate",
       title: "Upload Date",
       type: "datetime",
       options: { dateFormat: "YYYY-MM-DD", timeFormat: "HH:mm" },
-      validation: (Rule) => Rule.required(),
-    }),
+  validation: (Rule: import("sanity").Rule) => Rule.required(),    }),
   ],
   preview: {
     select: {

@@ -7,7 +7,7 @@ export default {
       name: "name",
       title: "Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "type",
@@ -20,7 +20,7 @@ export default {
           { title: "Widget", value: "widget" },
         ],
       },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "order",
@@ -87,5 +87,4 @@ export default {
       subtitle: "type",
     },
   },
-}
-
+};

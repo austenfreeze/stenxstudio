@@ -18,14 +18,14 @@ export default defineType({
       title: "Slug",
       type: "slug",
       options: { source: "name", maxLength: 100 },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "profileImage",
       title: "Profile Image",
       type: "image",
       options: { hotspot: true },
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "bio",

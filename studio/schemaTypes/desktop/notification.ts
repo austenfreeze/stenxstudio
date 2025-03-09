@@ -7,13 +7,13 @@ export default {
       name: "message",
       title: "Message",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "date",
       title: "Date",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     },
     {
       name: "isRead",
@@ -42,5 +42,4 @@ export default {
       subtitle: "date",
     },
   },
-}
-
+};

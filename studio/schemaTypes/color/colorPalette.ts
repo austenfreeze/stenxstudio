@@ -9,7 +9,7 @@ const colorPalette = defineType({
       name: "title",
       title: "Palette Name",
       type: "string",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule: import("sanity").Rule) => Rule.required(),
     }),
     defineField({
       name: "colors",
