@@ -1,6 +1,6 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-import { sanityFetch } from "@/lib/sanity/live";
+// import { sanityFetch } from "@/lib/sanity/live"; // Remove or comment out if not used
 
 // Sanity project configuration from environment variables
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "exu6nklw";
@@ -25,12 +25,18 @@ export const client = createClient({
 const builder = imageUrlBuilder(client);
 
 // Function to build image URLs
-export function urlFor(source: { _type: string, asset: { _ref: string } }): string {
-  return builder.image(source).url(); // `.url()` generates the URL for the image
+export function urlFor(source: { _type: string; asset: { _ref: string } }): string {
+  return builder.image(source).url();
+}
+
+// Define a type for your project, adjust this according to your schema
+export interface Project {
+  _id: string;
+  title: string;
 }
 
 // Get Projects from Sanity
-export async function getProjects() {
+export async function getProjects(): Promise<Project[]> {
   const query = `*[_type == "project"]{ _id, title }`;
   
   try {

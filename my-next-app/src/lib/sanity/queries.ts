@@ -1,6 +1,8 @@
-import { client } from "./client";  // ✅ Correct import
-import type { Project } from "./types";
-export async function getProject(slug: string) {
+import { client } from "./client"; // ✅ Correct import
+import type { Project } from "./types"; // ✅ Keep this if needed, otherwise remove
+
+// ✅ Fetch project by slug
+export async function getProject(slug: string): Promise<Project | null> {
   if (!slug) {
     console.error("❌ Error: Missing slug parameter in getProject.");
     return null;
@@ -44,7 +46,8 @@ export async function getProject(slug: string) {
         name,
         source
       },
-      refandinspo[]{
+      // cspell:ignore refandinspo
+      refAndInspo[]{ // ✅ Fixed typo and added spell-check ignore
         referenceName,
         referenceLink
       },
@@ -60,24 +63,24 @@ export async function getProject(slug: string) {
   }
 }
 
-// 🟢 Fetch all project slugs for dynamic paths
+// ✅ Fetch all project paths
 export async function getProjectPaths() {
   try {
     const query = `*[_type == "project"]{ "slug": slug.current }`;
-    const projects = await client.fetch(query);
+    const projects: { slug: string }[] = await client.fetch(query); // ✅ Explicitly typed
 
     if (!projects || projects.length === 0) {
       console.warn("⚠️ Warning: No project slugs found in Sanity.");
     }
 
-    return projects.map((p) => ({ slug: p.slug })).filter(p => p.slug); // Filter out undefined slugs
+    return projects.map((p: { slug: string }) => ({ slug: p.slug })).filter((p) => p.slug); // ✅ Fixed implicit any
   } catch (error) {
     console.error("❌ Error fetching project paths:", error);
     return [];
   }
 }
 
-// 🟢 Fetch all projects for the main list page
+// ✅ Fetch all projects for list page
 export async function getProjects() {
   try {
     const query = `*[_type == "project"]{
@@ -102,3 +105,32 @@ export async function getProjects() {
   }
 }
 
+// ✅ Fetch desktop items with error handling
+export async function getDesktopItems() {
+  try {
+    const query = `*[_type == "desktopItem"]{ _id, name, type, icon }`;
+    return await client.fetch(query);
+  } catch (error) {
+    console.error("❌ Error fetching desktop items:", error);
+    return [];
+  }
+}
+export async function getBrandingData() {
+  const query = `*[_type == "branding"][0]`;
+  return await client.fetch(query);
+}
+
+export async function getBrowserData() {
+  const query = `*[_type == "browserSettings"][0]`;
+  return await client.fetch(query);
+}
+
+export async function getMenuItems() {
+  const query = `*[_type == "menuItem"]`;
+  return await client.fetch(query);
+}
+
+export async function getTaskbarData() {
+  const query = `*[_type == "taskbar"]`;
+  return await client.fetch(query);
+}

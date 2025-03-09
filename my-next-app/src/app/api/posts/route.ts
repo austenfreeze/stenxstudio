@@ -1,4 +1,4 @@
-import { client } from "src/lib/sanity/sanity";
+import { client } from "../../../lib/sanity/sanity";
 import { NextResponse } from "next/server";
 
 export const config = { runtime: "edge" }; // ✅ Use Edge runtime for speed
