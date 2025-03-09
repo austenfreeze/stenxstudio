@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",   // ✅ Changed from "bundler" to "node"
+    "resolveJsonModule": true,
+    "target": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "jsxImportSource": "react",
+    "incremental": true,
+    "types": ["@types/react", "@types/tailwindcss", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["app/components/*"],
+      "@lib/*": ["lib/sanity/*"],
+      "@sanity/*": ["studio/schemaTypes/*"],
+      "@/*": ["./*"]
+    },
+    "plugins": [{ "name": "next" }]
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/sanity/types.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}
